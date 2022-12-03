@@ -1,0 +1,32 @@
+
+version: 2
+
+sources:
+  - name: input
+    tables:
+      - name: day01
+      - name: day02
+      - name: day03
+
+
+models:
+  - name: day_01_part_01
+    tests:
+      - dbt_datamocktool.unit_test:
+          input_mapping:
+            source('input', 'day01'): ref('test_day01')
+          expected_output: ref('expected_day01')
+    columns:
+        - name: out
+          description: "The final answer"
+          tests:
+              - not_null
+
+
+    # - name: day_01_part_02
+    #   description: "day 1 part 2"
+    #   columns:
+    #       - name: out
+    #         description: "The final answer"
+    #         tests:
+    #             - not_null
