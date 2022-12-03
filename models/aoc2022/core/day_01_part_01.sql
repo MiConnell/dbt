@@ -1,7 +1,7 @@
-with input as (
+with input_data as (
     select input
     from 
-    {{ source('input', 'day01') }}
+    {{ ref('day01') }}
 ),
 
 output as (
@@ -9,7 +9,7 @@ output as (
 ),
 
 final as (
-    select input as out from input 
+    select input as out from input_data
 )
 
 select * from final
