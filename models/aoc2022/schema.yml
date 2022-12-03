@@ -4,9 +4,9 @@ version: 2
 sources:
   - name: input
     tables:
-      - name: day1
-      - name: day2
-      - name: day3
+      - name: day01
+      - name: day02
+      - name: day03
 
 
 models:
@@ -14,15 +14,13 @@ models:
     tests:
       - dbt_datamocktool.unit_test:
           input_mapping:
-            source('input', 'day1'): ref('test_day01')
-          expected_output: 2400
-          depends_on:
-            - source('input', 'day1') 
-    #   columns:
-    #       - name: out
-    #         description: "The final answer"
-    #         tests:
-    #             - not_null
+            source('input', 'day01'): ref('test_day01')
+          expected_output: ref('expected_day01')
+    columns:
+        - name: out
+          description: "The final answer"
+          tests:
+              - not_null
 
 
     # - name: day_01_part_02
